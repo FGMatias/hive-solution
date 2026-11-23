@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/656346647b05a6c37ab7c494826698fa.webp';
+
+// Absolute paths so the footer also works on the legal pages and the 404.
+const sections = [
+  { href: '/#demos', label: 'Demos' },
+  { href: '/#proceso', label: 'Cómo trabajamos' },
+  { href: '/#faq', label: 'Preguntas' },
+];
+const legal = [
+  { href: '/privacidad', label: 'Privacidad' },
+  { href: '/terminos', label: 'Términos' },
+];
+const phones = [
+  { href: 'https://wa.me/51936479891', label: '+51 936 479 891' },
+  { href: 'https://wa.me/51989492411', label: '+51 989 492 411' },
+];
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/" aria-label="Hive Soluciones, volver al inicio">
+          <Image class="brand-mark" src={logoImg} alt="" width={64} height={64} format="webp" />
+          <span class="heading-6 brand-name">Hive Soluciones</span>
+        </a>
+        <p class="body-3 foot-pitch">
+          Software a medida que ordena tu operación: citas, stock, cobros y reportes.
+        </p>
+      </div>
+
+      <nav class="foot-col" aria-labelledby="f-sections">
+        <p class="foot-h caption-1" id="f-sections">Secciones</p>
+        <ul>
+          {sections.map((l) => <li><a class="foot-link" href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav class="foot-col" aria-labelledby="f-legal">
+        <p class="foot-h caption-1" id="f-legal">Legal</p>
+        <ul>
+          {legal.map((l) => <li><a class="foot-link" href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <div class="foot-col foot-contact" role="group" aria-labelledby="f-contact">
+        <p class="foot-h caption-1" id="f-contact">Escríbenos por WhatsApp</p>
+        <ul>
+          {phones.map((l) => <li><a class="foot-link foot-phone" href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bar">
+      <p class="caption-1">© 2026 Hive Soluciones</p>
+      <a class="foot-link foot-up caption-1" href="#contenido">Volver arriba <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+
+  <p class="foot-mark" aria-hidden="true">Hive</p>
+</footer>

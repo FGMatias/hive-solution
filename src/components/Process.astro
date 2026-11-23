@@ -1,0 +1,68 @@
+---
+const steps = [
+  {
+    number: '1',
+    title: 'Hablamos 30 minutos',
+    description:
+      'Nos cuentas cómo trabajas hoy y qué te quita tiempo. Salimos de la llamada con el problema claro, no con una lista de funciones.',
+    gets: 'El problema claro, no una lista de funciones.',
+  },
+  {
+    number: '2',
+    title: 'Te proponemos un alcance',
+    description:
+      'Armamos una propuesta por escrito: qué se construye primero, qué queda para después y cuánto cuesta.',
+    gets: 'Una propuesta por escrito con alcance y precio.',
+  },
+  {
+    number: '3',
+    title: 'Construimos por partes',
+    description:
+      'Te enseñamos avances funcionando, no diapositivas. Pruebas, nos dices qué corregir y recién seguimos.',
+    gets: 'Avances funcionando que puedes probar.',
+  },
+  {
+    number: '4',
+    title: 'Lo entregamos y te acompañamos',
+    description:
+      'Queda funcionando en tu negocio y tu equipo aprende a usarlo. Si algo falla o cambia, nos escribes.',
+    gets: 'El sistema en marcha y tu equipo sabiendo usarlo.',
+  },
+];
+---
+
+<section class="sec paper" id="proceso" aria-labelledby="t-proc">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="t-proc" class="heading-2">Cómo trabajamos.</h2>
+      <p class="lead sec-sub">
+        Cuatro pasos, sin sorpresas. Tú ves el avance funcionando antes de seguir con lo siguiente.
+      </p>
+    </div>
+    <ol class="comb" data-comb>
+      {
+        steps.map((step, index) => (
+          <li class="comb-step" style={`--i:${index}`}>
+            <div class="hex" aria-hidden="true">
+              <div class="hex-cell">
+                <div class="hex-honey"></div>
+                <span class="hex-num">{step.number}</span>
+              </div>
+            </div>
+            <div class="comb-body">
+              <h3 class="heading-3">
+                <span class="sr-only">Paso {step.number}. </span>
+                {step.title}
+              </h3>
+              <p class="body-3">{step.description}</p>
+              <p class="gets">
+                <span class="caption-1 gets-label">Qué recibes</span>
+                <span class="body-3 gets-text">{step.gets}</span>
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+// "demo" points to a project in the carousel. Integrations has no demo yet, and says so.
+const services = [
+  {
+    title: 'Software a medida, web y móvil',
+    description:
+      'Aplicaciones que nacen de cómo trabaja tu negocio. Sin pagar por funciones que no usas y sin forzar a tu equipo a trabajar como el programa quiere.',
+    example: 'reservas, ventas, inventario, clientes.',
+    demo: 'barberia',
+    link: 'Míralo en acción: Barbería',
+  },
+  {
+    title: 'Sistemas internos',
+    description:
+      'El panel que tu equipo abre todos los días. Reemplaza hojas de cálculo y chats sueltos por un solo lugar, con roles y permisos para cada persona.',
+    example: 'back office, control de stock, seguimiento de solicitudes.',
+    demo: 'banco-sangre',
+    link: 'Míralo en acción: Banco de sangre',
+  },
+  {
+    title: 'Integraciones',
+    description:
+      'Conectamos tu sistema con las herramientas que ya usas, para que los datos dejen de copiarse a mano de un lado a otro.',
+    example: 'servicios externos por API, importación de tus datos actuales.',
+    demo: '',
+    link: '',
+  },
+  {
+    title: 'Automatización',
+    description:
+      'Las tareas repetitivas pasan solas y dejan registro de lo que se hizo. Tu equipo se dedica a lo que sí necesita una persona.',
+    example: 'avisos a clientes, reportes periódicos, cargas masivas.',
+    demo: 'piscinas',
+    link: 'Míralo en acción: el ingreso se valida solo en Piscinas',
+  },
+];
+---
+
+<section class="sec alt" aria-labelledby="t-svc">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="t-svc" class="heading-2">Qué construimos.</h2>
+      <p class="lead sec-sub">
+        Todo empieza entendiendo cómo funciona tu negocio hoy. Si el tuyo es otro rubro, cuéntanoslo: partimos de cómo trabajas, no de una plantilla.
+      </p>
+    </div>
+    <ul class="svc">
+      {
+        services.map((service) => (
+          <li>
+            <h3 class="heading-3">{service.title}</h3>
+            <div class="svc-body">
+              <p class="body-3">{service.description}</p>
+              <p class="body-3 eg"><strong>Por ejemplo:</strong> {service.example}</p>
+            </div>
+            <div class="svc-demo">
+              {service.demo ? (
+                <a class="p-link" href="#demos" data-demo={service.demo}>
+                  {service.link}
+                  <span class="p-arrow" aria-hidden="true">→</span>
+                </a>
+              ) : (
+                <p class="caption-1 svc-none">Todavía sin demo. Cuéntanos qué herramientas usas.</p>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

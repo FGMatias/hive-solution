@@ -1,0 +1,22 @@
+---
+// Tagline reveal (landing-page-design B11): a large statement whose words light up
+// one at a time as they cross a trigger line while scrolling.
+const text = 'Una colmena no se construye de una vez. Se arma celda por celda, y cada celda ya sirve.';
+const accentFrom = text.split(' ').length - 4; // "cada celda ya sirve." glows like honey
+const words = text.split(' ');
+---
+
+<section class="sec tagline" aria-label="Cómo pensamos" data-tagline>
+  <div class="wrap">
+    <p class="heading-2 tg-text">
+      {
+        words.map((word, i) => (
+          <>
+            <span class={`tg-word${i >= accentFrom ? ' tg-accent' : ''}`} style={`--w:${i % 6}`}>{word}</span>
+            {i < words.length - 1 ? ' ' : ''}
+          </>
+        ))
+      }
+    </p>
+  </div>
+</section>

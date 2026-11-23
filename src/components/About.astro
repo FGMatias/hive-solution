@@ -1,0 +1,39 @@
+---
+const facts = [
+  {
+    title: 'Demos que puedes abrir',
+    text: 'Barbería, banco de sangre, piscinas y ferretería, funcionando en vivo.',
+  },
+  {
+    title: 'Hablas con quienes lo programan',
+    text: 'En la llamada hablas con quienes van a programarlo.',
+  },
+  {
+    title: 'Si no podemos, te lo decimos',
+    text: 'Si no es algo que podamos hacer bien, te lo decimos.',
+  },
+];
+---
+
+<section class="sec" aria-labelledby="t-nos">
+  <div class="wrap">
+    <div class="split">
+      <div class="sec-head">
+        <h2 id="t-nos" class="heading-2">Somos nuevos, y por eso te lo decimos de frente.</h2>
+      </div>
+      <p class="lead about-p">
+        Hive Soluciones es una startup de desarrollo de software que recién empieza. No vamos a poner logos de clientes que todavía no tenemos. Esto sí tenemos:
+      </p>
+    </div>
+    <ul class="facts">
+      {
+        facts.map((fact) => (
+          <li>
+            <h3 class="title-fact">{fact.title}</h3>
+            <p class="body-3">{fact.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

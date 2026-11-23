@@ -1,0 +1,59 @@
+---
+// Each problem points to the demo that shows how it looks solved. Only real links:
+// the third one is about the approach, so it points to the demos in general.
+const problems = [
+  {
+    text: 'Las citas viven en un cuaderno, los pagos en el celular y el inventario en la memoria de alguien.',
+    demo: 'barberia',
+    link: 'Mira la agenda, la caja y el inventario juntos: Barbería',
+  },
+  {
+    text: 'Para saber cuánto vendiste este mes, alguien tiene que juntar cuatro hojas de Excel.',
+    demo: 'banco-sangre',
+    link: 'Mira cómo la deuda se calcula sola: Banco de sangre',
+  },
+  {
+    text: 'Compraste un programa que ya existe y terminaste adaptando tu negocio al programa, no al revés.',
+    demo: '',
+    link: 'Mira sistemas hechos a la medida',
+  },
+  {
+    text: 'Cada vez que algo cambia, cambias tres cosas más: una hoja, un grupo de WhatsApp y un papel pegado en la pared.',
+    demo: 'piscinas',
+    link: 'Mira turnos, cupos y matrículas en un solo lugar: Piscinas',
+  },
+];
+---
+
+<section class="sec" aria-labelledby="t-prob">
+  <div class="wrap split">
+    <div class="sec-head">
+      <h2 id="t-prob" class="heading-2">Seguro te suena.</h2>
+      <p class="lead sec-sub">
+        No es falta de orden. Es que las herramientas que usas no se parecen a tu negocio.
+      </p>
+    </div>
+    <ul class="problems">
+      {
+        problems.map((item) => (
+          <li>
+            <p class="p-text">{item.text}</p>
+            <a class="p-link" href="#demos" data-demo={item.demo || undefined}>
+              {item.link}
+              <span class="p-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  // Take the carousel to the project this problem points to.
+  document.querySelectorAll<HTMLAnchorElement>('a[data-demo]').forEach((link) => {
+    link.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('hive:demo', { detail: link.dataset.demo }));
+    });
+  });
+</script>

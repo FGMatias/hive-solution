@@ -1,0 +1,150 @@
+{
+  "demos": [
+    {
+      "id": "barberia",
+      "name": "Barbería",
+      "lead": "Para barberías que llevan la agenda, la caja y el inventario por separado.",
+      "before": "La agenda, la caja y el inventario viven por separado.",
+      "after": "Citas por barbero, caja y clientes en un solo panel.",
+      "url": "https://jhonnatan-barber.netlify.app/",
+      "meta": "Datos de ejemplo.",
+      "shots": [
+        {
+          "label": "Calendario",
+          "source": "f18ad469995cdf9e21fdadcb3b48566d.webp",
+          "caption": "Agenda del día por barbero y lista de espera en sala.",
+          "alt": "Panel de la demo Barbería Jhonnatan: calendario del día por barbero, con citas por estado y lista de espera."
+        },
+        {
+          "label": "Clientes",
+          "source": "demos/barberia-cliente.png",
+          "caption": "Ficha del cliente con gasto acumulado, visitas y puntos.",
+          "alt": "Ficha de cliente en Barbería Jhonnatan con total gastado, visitas, puntos de fidelización e historial."
+        },
+        {
+          "label": "Comisiones",
+          "source": "demos/barberia-staff-jornada.png",
+          "caption": "Jornada del barbero con ingresos del día y cálculo semanal.",
+          "alt": "Vista de jornada del barbero con agenda del día, ingresos y tabla semanal de comisiones."
+        },
+        {
+          "label": "Servicios",
+          "source": "demos/barberia-servicios.png",
+          "caption": "Catálogo con duración, precio, comisión y estado activo.",
+          "alt": "Tabla de servicios de la barbería con duración, precio, porcentaje de comisión y estado."
+        }
+      ]
+    },
+    {
+      "id": "banco-sangre",
+      "name": "Banco de sangre",
+      "lead": "Para bancos de sangre que llevan a mano las unidades que cada paciente debe o repone.",
+      "before": "Las unidades que debe cada paciente se llevan a mano.",
+      "after": "La deuda se calcula sola y sale lista para imprimir en A4.",
+      "url": "https://demo-banco-sangre-peru.netlify.app/",
+      "meta": "Datos ficticios, guardados solo en tu navegador.",
+      "shots": [
+        {
+          "label": "Pacientes",
+          "source": "f234302548d25550f674a61659d83144.webp",
+          "caption": "Tablero con saldo automático de unidades y filtros de situación.",
+          "alt": "Panel de la demo Banco de Sangre: pacientes con su deuda de unidades y acciones rápidas."
+        },
+        {
+          "label": "Lista A4",
+          "source": "demos/banco-lista-deuda-a4.png",
+          "caption": "Documento oficial con doble copia y modo de iniciales para vigilancia.",
+          "alt": "Lista oficial de pacientes con deuda de sangre en formato A4 imprimible con doble tabla."
+        },
+        {
+          "label": "Registro",
+          "source": "demos/banco-registro-paciente.png",
+          "caption": "Flujo guiado en tres pasos: paciente, atención y documentos.",
+          "alt": "Formulario guiado paso 1 de 3 para registrar nuevo paciente, grupo sanguíneo y cama."
+        },
+        {
+          "label": "Auditoría",
+          "source": "demos/banco-auditoria.png",
+          "caption": "Exportación a CSV y bitácora inmutable por operador.",
+          "alt": "Módulo de exportación a Excel CSV y bitácora de auditoría con registro de acciones."
+        }
+      ]
+    },
+    {
+      "id": "piscinas",
+      "name": "Piscinas",
+      "lead": "Para piscinas y academias que controlan turnos, cupos y matrículas en papel.",
+      "before": "Turnos, cupos y matrículas en papel.",
+      "after": "El ingreso se valida con QR y cada turno controla su cupo.",
+      "url": "https://pool-system.netlify.app/",
+      "meta": "Datos de ejemplo.",
+      "shots": [
+        {
+          "label": "Ingreso QR",
+          "source": "demos/pool-validacion-qr.png",
+          "caption": "Lector QR en puerta con casos de prueba y turnos de hoy.",
+          "alt": "Panel de la demo Pool System: validación de ingreso por código QR con turnos del día."
+        },
+        {
+          "label": "Turnos",
+          "source": "demos/pool-turnos.png",
+          "caption": "Horarios por nivel con cupo máximo, aforo y disponibilidad.",
+          "alt": "Gestión de turnos con horario, nivel, barra de aforo y estado de disponibilidad."
+        },
+        {
+          "label": "Matrículas",
+          "source": "demos/pool-matriculas.png",
+          "caption": "Alumnos con turno asignado, fechas de vigencia y clases usadas.",
+          "alt": "Listado de matrículas y alumnos con vigencia, progreso de clases y estado."
+        }
+      ]
+    },
+    {
+      "id": "ferreteria",
+      "name": "Ferretería",
+      "lead": "Para ferreterías que llevan el stock, las ventas y las devoluciones por separado.",
+      "before": "El stock, las ventas y las devoluciones se llevan por separado.",
+      "after": "Cada venta descuenta stock y deja su movimiento en el kárdex.",
+      "url": "https://sistema-ferrenorte.netlify.app/",
+      "meta": "Datos de ejemplo.",
+      "shots": [
+        {
+          "label": "Tablero",
+          "source": "demos/ferreteria-tablero.png",
+          "caption": "Ventas netas, devoluciones y alertas de stock en tiempo real.",
+          "alt": "Tablero de la demo FerreNorte: ventas netas del día, devoluciones, alertas de inventario, productos con stock crítico y últimos movimientos."
+        },
+        {
+          "label": "Punto de venta",
+          "source": "demos/ferreteria-punto-venta.png",
+          "caption": "Catálogo con búsqueda y categorías, boleta o factura con IGV.",
+          "alt": "Punto de venta de FerreNorte con catálogo de productos por categoría y detalle de venta con cliente, comprobante y método de pago."
+        },
+        {
+          "label": "Ventas",
+          "source": "demos/ferreteria-ventas.png",
+          "caption": "Historial de comprobantes con devoluciones parciales y anulación.",
+          "alt": "Historial de ventas con boletas y facturas, monto devuelto, estado y acciones para ver, devolver o anular."
+        },
+        {
+          "label": "Inventario",
+          "source": "demos/ferreteria-inventario.png",
+          "caption": "Stock real por producto con mínimo, ubicación en almacén y costo.",
+          "alt": "Inventario con SKU, ubicación, categoría, costo y precio de venta, stock real frente al mínimo y estado."
+        },
+        {
+          "label": "Kárdex",
+          "source": "demos/ferreteria-kardex.png",
+          "caption": "Cada entrada, salida y ajuste queda con fecha y responsable.",
+          "alt": "Kárdex de movimientos con producto, tipo de movimiento, variación de stock, referencia y responsable."
+        },
+        {
+          "label": "Clientes",
+          "source": "demos/ferreteria-clientes.png",
+          "caption": "Clientes con DNI o RUC para emitir boleta o factura.",
+          "alt": "Listado de clientes con documento, razón social, teléfono, dirección y fecha de registro."
+        }
+      ]
+    }
+  ]
+}

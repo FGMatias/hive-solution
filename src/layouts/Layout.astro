@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/geist';
+import '../styles/global.css';
+import geistLatin from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  motion?: boolean;
+}
+
+const {
+  title = 'Hive Soluciones: creamos el producto que ordena tu operación',
+  description = 'Diseñamos y construimos sistemas a la medida para citas, stock, cobros y reportes. Agenda una llamada de 30 minutos por WhatsApp.',
+  noindex = false,
+  motion = false,
+} = Astro.props;
+
+// Absolute when `site` is set in astro.config.mjs; relative otherwise.
+const ogImage = Astro.site ? new URL('/og.jpg', Astro.site).href : '/og.jpg';
+const canonical = Astro.site && !noindex ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang="es-PE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0E0B09" />
+    {
+      motion && (
+        <script is:inline>
+          {`if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('motion');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('motion')},4000)}`}
+        </script>
+      )
+    }
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:site_name" content="Hive Soluciones" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Abejas sobre un panal en blanco y negro con una celda naranja y el texto: Creamos el producto que ordena tu operación." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="font" type="font/woff2" href={geistLatin} crossorigin />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <slot />
+  </body>
+</html>

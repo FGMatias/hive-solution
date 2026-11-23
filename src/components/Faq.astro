@@ -1,0 +1,70 @@
+---
+// Answers only say what is confirmed: the call is free and without commitment, and the price,
+// the timing and who owns the code are agreed in writing in the proposal.
+const faqs = [
+  {
+    q: '¿Cuánto cuesta?',
+    a: 'La llamada es gratis y sin compromiso. Después te enviamos una propuesta por escrito con el alcance y el precio, para que decidas con números claros.',
+  },
+  {
+    q: '¿Cuánto demora?',
+    a: 'Lo definimos en la propuesta, según el alcance. Empezamos por la parte que más te duele para que puedas usarla cuanto antes, y de ahí seguimos con el resto, por etapas.',
+  },
+  {
+    q: '¿Qué pasa después de la llamada?',
+    a: 'Te enviamos una propuesta por escrito: qué se construye primero, qué queda para después y cuánto cuesta. Tú decides con eso. Si avanzas, construimos por partes y ves cada avance funcionando antes de seguir.',
+  },
+  {
+    q: '¿Trabajan con negocios pequeños o solo con empresas?',
+    a: 'Con los dos. Un sistema a medida sirve igual para un negocio de una sola sede que para una empresa con varias áreas.',
+  },
+  {
+    q: 'Ya uso Excel u otro sistema. ¿Empiezo de cero?',
+    a: 'No. Podemos importar tus datos actuales y conectar el sistema nuevo con las herramientas que ya usas.',
+  },
+  {
+    q: '¿De quién es el código del sistema?',
+    a: 'Lo acordamos por escrito en la propuesta, antes de empezar, para que sepas exactamente qué recibes. Si es importante para ti, pregúntanos en la llamada.',
+  },
+  {
+    q: 'Son una empresa nueva, ¿qué respaldo tengo?',
+    a: 'Es cierto: somos nuevos y no tenemos clientes que citar. Lo que te damos es poder ver sistemas funcionando antes de decidir, y avances que pruebas por etapas durante el proyecto.',
+  },
+  {
+    q: '¿Qué necesito para la llamada?',
+    a: 'Solo contarnos qué haces y qué te quita tiempo. No hace falta saber de tecnología.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<section class="sec alt" id="faq" aria-labelledby="t-faq">
+  <div class="wrap split">
+    <div class="sec-head">
+      <h2 id="t-faq" class="heading-2">Preguntas frecuentes.</h2>
+    </div>
+    <div class="faq">
+      {
+        faqs.map((item) => (
+          <details>
+            <summary>
+              {item.q}
+              <span class="pm" aria-hidden="true"></span>
+            </summary>
+            <p class="ans body-3">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+</section>

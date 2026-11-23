@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/656346647b05a6c37ab7c494826698fa.webp';
+
+const whatsappUrl =
+  'https://wa.me/51936479891?text=Hola%2C%20quiero%20agendar%20una%20llamada%20de%2030%20minutos%20con%20Hive%20Soluciones.';
+
+const links = [
+  { href: '/#demos', label: 'Demos', id: 'demos' },
+  { href: '/#proceso', label: 'Cómo trabajamos', id: 'proceso' },
+  { href: '/#faq', label: 'Preguntas', id: 'faq' },
+];
+---
+
+<header class="site-header" data-header>
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="Hive Soluciones, volver al inicio">
+      <Image class="brand-mark" src={logoImg} alt="" width={64} height={64} format="webp" />
+      <span class="heading-6 brand-name">Hive Soluciones</span>
+    </a>
+
+    <nav class="header-nav" aria-label="Principal">
+      {links.map((link) => <a class="title-4 nav-link" href={link.href} data-spy={link.id}>{link.label}</a>)}
+    </nav>
+
+    <div class="header-actions">
+      <a class="button-sm header-cta" href={whatsappUrl}>
+        <span class="header-cta-short">WhatsApp</span>
+        <span class="header-cta-long">Escribir por WhatsApp</span>
+      </a>
+      <button
+        type="button"
+        class="menu-btn"
+        aria-expanded="false"
+        aria-controls="menu-panel"
+        aria-label="Abrir menú"
+        hidden
+        data-menu-btn
+      >
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu-panel" id="menu-panel" data-menu-panel inert>
+    <nav class="wrap menu-nav" aria-label="Menú móvil">
+      {
+        links.map((link, i) => (
+          <a class="menu-link nav-link" href={link.href} data-spy={link.id} style={`--k:${i}`}>
+            {link.label}
+          </a>
+        ))
+      }
+      <a class="btn menu-cta" href={whatsappUrl} style={`--k:${links.length}`}>Agenda una llamada de 30 minutos</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+
+  if (header && btn && panel) {
+    btn.hidden = false;
+    const outside = Array.from(document.querySelectorAll<HTMLElement>('main, footer'));
+
+    const setOpen = (open: boolean, restoreFocus = false) => {
+      header.classList.toggle('menu-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      panel.toggleAttribute('inert', !open);
+      outside.forEach((el) => el.toggleAttribute('inert', open));
+      document.documentElement.classList.toggle('menu-lock', open);
+      if (open) {
+        panel.querySelector<HTMLElement>('a')?.focus();
+      } else if (restoreFocus) {
+        btn.focus();
+      }
+    };
+
+    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') setOpen(false, true);
+    });
+    window.matchMedia('(min-width: 860px)').addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+
+  // Current section in the navigation
+  const spyTargets = Array.from(document.querySelectorAll<HTMLElement>('[data-spy]'));
+  const ids = Array.from(new Set(spyTargets.map((el) => el.dataset.spy ?? '')));
+  const sections = ids
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => Boolean(el));
+
+  if (sections.length && 'IntersectionObserver' in window) {
+    const current = new Set<string>();
+    const mark = () => {
+      const active = sections.map((s) => s.id).find((id) => current.has(id)) ?? '';
+      spyTargets.forEach((el) => {
+        if (el.dataset.spy === active) el.setAttribute('aria-current', 'true');
+        else el.removeAttribute('aria-current');
+      });
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = (entry.target as HTMLElement).id;
+          if (entry.isIntersecting) current.add(id);
+          else current.delete(id);
+        });
+        mark();
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => observer.observe(s));
+  }
+</script>

@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Página no encontrada | Hive Soluciones" description="Esta página no existe." noindex>
+  <Header />
+  <main id="contenido" class="notfound">
+    <div class="wrap notfound-in">
+      <div class="hex hex-lg" aria-hidden="true">
+        <div class="hex-cell"><span class="hex-num">404</span></div>
+      </div>
+      <h1 class="heading-2">Esta celda está vacía.</h1>
+      <p class="lead sec-sub">La página que buscas no existe o se movió. Vuelve al inicio y sigue desde ahí.</p>
+      <a class="btn notfound-btn" href="/">Volver al inicio</a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import heroBeesImg from '../assets/hero-bees-bw.jpg';
+
+const whatsappUrl =
+  'https://wa.me/51936479891?text=Hola%2C%20quiero%20agendar%20una%20llamada%20de%2030%20minutos%20con%20Hive%20Soluciones.';
+---
+
+<section class="sec cta" aria-labelledby="t-cta">
+  <div class="cta-bg" aria-hidden="true">
+    <Image src={heroBeesImg} alt="" widths={[640, 1024, 1600]} sizes="100vw" format="webp" quality={45} loading="lazy" />
+  </div>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="t-cta" class="heading-2">Cuéntanos qué te quita tiempo.</h2>
+      <p class="lead sec-sub">
+        En la llamada hablas con quienes van a programarlo. Salimos con el problema claro y los siguientes pasos.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href={whatsappUrl}>Agenda una llamada de 30 minutos</a>
+        <p class="caption-1 btn-note">La llamada es gratis y sin compromiso. Coordinamos el horario por WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>

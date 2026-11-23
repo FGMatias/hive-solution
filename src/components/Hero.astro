@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import heroBeesImg from '../assets/hero-bees-bw.jpg';
+
+const whatsappUrl =
+  'https://wa.me/51936479891?text=Hola%2C%20quiero%20agendar%20una%20llamada%20de%2030%20minutos%20con%20Hive%20Soluciones.';
+
+// Honeycomb geometry (pointy-top hexagons). One tile holds a whole repeating unit,
+// so the mesh is a single <pattern> instead of hundreds of polygons.
+const R = 44;
+const W = Math.sqrt(3) * R;
+const TILE_H = 3 * R;
+
+const hexPoints = (cx: number, cy: number) =>
+  Array.from({ length: 6 }, (_, k) => {
+    const a = (Math.PI / 180) * (60 * k - 30);
+    return `${(cx + R * Math.cos(a)).toFixed(1)},${(cy + R * Math.sin(a)).toFixed(1)}`;
+  }).join(' ');
+
+const tileCenters: Array<[number, number]> = [
+  [0, 0],
+  [W, 0],
+  [0, TILE_H],
+  [W, TILE_H],
+  [W / 2, TILE_H / 2],
+];
+
+// The one lit cell: column 14, odd row 5 on the same grid as the pattern.
+const litCol = 14;
+const litRow = 5;
+const litX = litCol * W + (litRow % 2 ? W / 2 : 0);
+const litY = litRow * 1.5 * R;
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true">
+    <Image
+      src={heroBeesImg}
+      alt=""
+      widths={[640, 1024, 1600]}
+      sizes="100vw"
+      format="webp"
+      quality={50}
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <svg
+    class="hero-mesh"
+    viewBox="0 0 1440 900"
+    preserveAspectRatio="xMaxYMid slice"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <pattern id="hex-cream" width={W} height={TILE_H} patternUnits="userSpaceOnUse">
+        {tileCenters.map(([cx, cy]) => (
+          <polygon points={hexPoints(cx, cy)} fill="none" stroke="#f6e8d4" stroke-width="1" />
+        ))}
+      </pattern>
+      <pattern id="hex-neon" width={W} height={TILE_H} patternUnits="userSpaceOnUse">
+        {tileCenters.map(([cx, cy]) => (
+          <polygon points={hexPoints(cx, cy)} fill="none" stroke="#ff7a1a" stroke-width="1.6" />
+        ))}
+      </pattern>
+    </defs>
+    <rect class="mesh-base" width="1440" height="900" fill="url(#hex-cream)" />
+    <rect class="mesh-hot" width="1440" height="900" fill="url(#hex-neon)" />
+    <polygon class="cell-lit" points={hexPoints(litX, litY)} />
+  </svg>
+
+  <div class="cell-m" aria-hidden="true"><span></span></div>
+
+  <div class="wrap hero-wrap">
+    <div class="hero-copy">
+      <h1 id="hero-title" class="hero-title">Creamos el producto que ordena tu operación.</h1>
+      <p class="lead hero-lead">
+        Diseñamos y construimos sistemas a la medida para tus citas, stock, cobros y reportes. Ves avances funcionando por partes, sin sorpresas.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href={whatsappUrl}>Agenda una llamada de 30 minutos</a>
+        <p class="caption-1 btn-note">La llamada es gratis y sin compromiso. Coordinamos el horario por WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>

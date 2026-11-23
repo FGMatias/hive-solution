@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-22T17:30:00-05:00",
+  "title": "Design System: Hive Soluciones",
+  "extensions": {
+    "colorMeta": {
+      "honey": { "role": "primary", "displayName": "Miel", "canonical": "#ff7a1a", "tonalRamp": ["#ffb070", "#ff8d3a", "#ff7a1a", "#df6a14"] },
+      "wall": { "role": "neutral", "displayName": "Pared", "canonical": "#0e0b09", "tonalRamp": ["#0e0b09", "#15100c", "#2c241d", "#40342a"] },
+      "cream": { "role": "neutral", "displayName": "Crema", "canonical": "#f6e8d4", "tonalRamp": ["#f6e8d4", "#d9c5ab", "#4a3f34", "#1e1a16"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Solo el titulo del hero." },
+      "headline": { "displayName": "Headline", "purpose": "Titulos de seccion y la frase del tagline." },
+      "body": { "displayName": "Body", "purpose": "Texto corrido, 65 a 75 caracteres." }
+    },
+    "shadows": [
+      { "name": "halo-miel", "value": "0 0 0 1px rgba(255,190,120,.4), 0 0 28px rgba(255,122,26,.45), 0 10px 30px -12px rgba(229,57,43,.6)", "purpose": "Unico brillo de la pagina: boton primario." },
+      { "name": "apoyo-captura", "value": "0 0 0 1px #000, 0 40px 80px -40px #000", "purpose": "Marcos de capturas de demos." }
+    ],
+    "motion": [
+      { "name": "ease-base", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Toda transicion; llenado de celdas, menu, revelados." },
+      { "name": "fill-cell", "value": "900ms to 1100ms", "purpose": "Duracion del llenado de miel de una celda." }
+    ],
+    "breakpoints": [
+      { "name": "menu", "value": "860px" },
+      { "name": "sections", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "El unico boton relleno; agenda la llamada por WhatsApp.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Agenda una llamada de 30 minutos</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:12px 32px;border-radius:10px;background:#ff7a1a;color:#0e0b09;font:600 16px/24px Geist,system-ui,sans-serif;text-decoration:none;box-shadow:0 0 0 1px rgba(255,190,120,.4),0 0 28px rgba(255,122,26,.45),0 10px 30px -12px rgba(229,57,43,.6);transition:transform 240ms cubic-bezier(.22,1,.36,1)}.ds-btn:hover{transform:translateY(-1px)}"
+    },
+    {
+      "name": "Hexagon Cell",
+      "kind": "custom",
+      "refersTo": "hex-cell",
+      "description": "Firma del sistema: contorno de linea fina que se llena de miel de abajo hacia arriba.",
+      "html": "<div class=\"ds-hex\"><div class=\"ds-hex-in\"><div class=\"ds-honey\"></div><span>1</span></div></div>",
+      "css": ".ds-hex{position:relative;width:88px;aspect-ratio:.866;background:#f6e8d4;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}.ds-hex-in{position:absolute;inset:2px;overflow:hidden;background:#0e0b09;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:grid;place-items:center;color:#0e0b09}.ds-honey{position:absolute;inset:0;background:#ff7a1a}.ds-hex-in span{position:relative;font:600 28px/1 Geist,system-ui,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La celda que se llena",
+    "overview": "Hive se presenta como una colmena: nada se construye de una vez, se arma celda por celda y cada celda ya sirve. Pagina oscura y sobria con una foto real de abejas en blanco y negro, y un solo color con significado: el naranja es la miel y aparece solo donde algo esta activo o completo.",
+    "keyCharacteristics": [
+      "Oscuridad calida con tipografia crema",
+      "Una sola familia tipografica (Geist)",
+      "Un acento: miel, reservado a lo activo",
+      "Hexagonos de linea fina y llenado de abajo hacia arriba",
+      "Una pausa crema en Como trabajamos"
+    ],
+    "rules": [
+      { "name": "La regla de la miel", "body": "El naranja ocupa menos del 10% de cualquier pantalla y siempre significa activo o completo.", "section": "colors" },
+      { "name": "La regla del halo", "body": "El brillo pertenece solo al boton primario.", "section": "elevation" },
+      { "name": "La regla de la sola voz", "body": "Una familia tipografica, sin cursivas ni pesos sobre semibold.", "section": "typography" }
+    ],
+    "dos": [
+      "Do usar el naranja solo para lo activo o completo",
+      "Do llenar las celdas de abajo hacia arriba con la curva base",
+      "Do respetar prefers-reduced-motion mostrando el estado final",
+      "Do repetir el boton de WhatsApp identico en hero, menu y cierre"
+    ],
+    "donts": [
+      "Don't dibujar abejas, tarros de miel ni iconos tematicos",
+      "Don't usar hexagonos como papel tapiz",
+      "Don't poner logos, testimonios o cifras que no existan",
+      "Don't dar brillo a nada mas que al boton primario"
+    ]
+  }
+}
